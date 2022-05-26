@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+
+    <!-- CSS only -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!--    <script src="js/jquery-3.6.0.min.js"></script>-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../js/AdminPanel.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-5 ">
+    <div class="container-fluid ">
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo01">
+            <a class="navbar-brand mx-2" href="#">Admin panel</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <li class="dropdown show">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="ServiceTools" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Service Tools
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="ServiceTools">
+                        <a class="dropdown-item" aria-current="page" href="#" data-toggle="modal"
+                           data-target="#Service">Add Service</a>
+
+                        <a class="dropdown-item" aria-current="page" href="#" data-toggle="modal"
+                           data-target="#SubService" onclick="setServicesForAddSubService()">Add SubService</a>
+
+
+                    </div>
+                </li>
+
+                <li class="dropdown show">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="ExpertTools" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Expert Tools
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="ExpertTools">
+                        <a class="dropdown-item" aria-current="page" href="#" data-toggle="modal"
+                           data-target="#Requests" onclick="setExpertRequestsToSelectOption()">Requests</a>
+
+                        <a class="dropdown-item" href="#">Add SubService</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" data-toggle="modal"
+                       data-target="#Search">Search</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!--add service-->
+<div class="modal fade" id="Service" tabindex="-1" role="dialog" aria-labelledby="Service"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <form action="" id="ServiceSave" method="POST">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Service</h5>
+                </div>
+                <div class="modal-body ">
+
+                    <div class="form-group shadow-2-strong"
+                         style="border-radius: 1rem;">
+                        <div class="card-body text-center mt-2">
+
+                            <div class="form-outline ">
+                                <input type="text" id="ServiceName" name="ServiceName"
+                                       class="form-control form-control-lg"/>
+                                <label class="form-label" for="ServiceName">Service name</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-outline-secondary " data-dismiss="modal" value="Close">
+                    <button class="btn btn-outline-primary" type="submit"
+                            value="Save">Save
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--add service-->
+<!--add subService-->
+<div class="modal fade" id="SubService" tabindex="-1" role="dialog" aria-labelledby="SubService"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <form action="" id="SubServiceForm" name="SubServiceForm" method="POST">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle1">Add SubService</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group shadow-2-strong"
+                         style="border-radius: 1rem;">
+                        <div class="card-body text-center ">
+
+                            <select class="form-select form-select-lg mt-2 mb-2 w-50  m-auto"
+                                    aria-label="Default select example"
+                                    id="ServicesSelectedForSubService">
+                                <option selected disabled>select the service</option>
+                            </select>
+
+                            <div class="form-outline mt-3 w-50  m-auto">
+                                <input type="text" id="SubName" name="SubName"
+                                       class="form-control form-control-lg"/>
+                                <label class="form-label" for="SubName">name</label>
+                            </div>
+
+                            <div class="form-outline mt-3  w-50 m-auto">
+                                <input type="text" id="SubDescription" name="SubDescription"
+                                       class="form-control form-control-lg"/>
+                                <label class="form-label" for="SubDescription">description</label>
+                            </div>
+
+                            <div class="form-outline mt-3  w-50 m-auto">
+                                <input type="text" id="SubBasePrice" name="SubBasePrice"
+                                       class="form-control form-control-lg"/>
+                                <label class="form-label" for="SubBasePrice">base price</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="Close">
+                    <button class="btn btn-outline-primary btn-lg" type="submit" name="button" id="button"
+                            onclick="">Save
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--add subService-->
+<!--request-->
+<div class="modal fade" id="Requests" tabindex="-1" role="dialog" aria-labelledby="Requests"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <form action="" id="RequestsForm" name="SubServiceForm" method="POST">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Requests</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group shadow-2-strong"
+                         style="border-radius: 1rem;">
+                        <div class="card-body text-center ">
+
+                            <select class="form-select form-select-lg mt-2 mb-2   m-auto"
+                                    aria-label="Default select example"
+                                    id="ExpertSelectedOption">
+                                <option selected disabled></option>
+                            </select>
+                            <label class="form-label">select the expert</label>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-outline-secondary btn-lg" data-dismiss="modal" value="Close">
+                    <button class="btn btn-outline-primary btn-lg" type="submit" name="button" id="buttonExpert"
+                            onclick="">Save
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--request-->
+<!--search-->
+<div class="modal fade" id="Search" tabindex="-1" role="dialog" aria-labelledby="Search"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <form action="" id="SearchForm" name="SubServiceForm" method="GET">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Filter</h5>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group shadow-2-strong " style="border-radius: 1rem;">
+                        <div class="card-body text-center ">
+
+                            <div class="form-check d-flex justify-content-center mb-2 " onchange="searchType()">
+                                <input type="radio" id="rdiCustomer" class="form-check-input mx-1" name="gridType"
+                                       value="customer" >
+                                <label for="rdiCustomer" class="form-check-label mx-3">customer</label>
+                                <input type="radio" class="form-check-input mx-2" id="rdiExpert" name="gridType"
+                                       value="expert" checked>
+                                <label for="rdiExpert" class="form-check-label mx-4">expert</label>
+                            </div>
+
+                            <div class="form-outline  mt-1  m-auto d-inline-block" style="width: 19%">
+                                <input type="text" id="firstNameGrid" name="firstNameGrid"
+                                       class="form-control "/>
+                                <label class="form-label" for="firstNameGrid">first name</label>
+                            </div>
+
+                            <div class="form-outline mt-1 mx-1  m-auto d-inline-block" style="width: 19%">
+                                <input type="text" id="lastNameGrid" name="lastNameGrid"
+                                       class="form-control "/>
+                                <label class="form-label" for="lastNameGrid">last name</label>
+                            </div>
+
+                            <div class="form-outline mt-1 mx-1  m-auto d-inline-block" style="width: 19%">
+                                <input type="text" id="emailGrid" name="emailGrid"
+                                       class="form-control "/>
+                                <label class="form-label" for="emailGrid">email</label>
+                            </div>
+
+                            <div class="form-outline mt-1  mx-1 m-auto d-inline-block" style="width: 19%">
+                                <input type="text" id="serviceNameGrid" name="serviceNameGrid"
+                                       class="form-control "/>
+                                <label class="form-label" for="serviceNameGrid" id="serviceNameGridLBl">service name</label>
+                            </div>
+
+                            <div class="form-outline mt-1 mx-1  m-auto d-inline-block" style="width: 10%">
+                                <input type="number" id="scoreGrid" name="scoreGrid"
+                                       class="form-control "/>
+                                <label class="form-label" for="scoreGrid" id="scoreGridLBL">score</label>
+                            </div>
+
+                            <hr>
+                            <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">User State</th>
+                                    <th scope="col">Date of Register</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tBodySearchGrid">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="reset" class="btn btn-outline-secondary btn-lg"  value="Clear">
+                    <input type="submit" class="btn btn-outline-danger btn-lg" data-dismiss="modal" value="Close">
+                    <button class="btn btn-outline-primary btn-lg" type="submit" name="button" id="searchButton"
+                            onclick="">Search
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--search-->
+
+<!--body-->
+<div class="container " style="margin-top: 65px">
+    <div class="alert alert-success alert-dismissible fade my-5 w-50 m-auto  rounded-pill" id="massage" role="alert">
+        <div class="w-75 d-inline-block ">
+            <strong id="userAlert"></strong> <span id="descriptionAlert"></span></div>
+        <div class="d-inline-block bg-white text-center rounded-pill" style="width: 20%">
+            <button type="button" class=" btn btn-close-white btn-primary " onclick="hideMassage()" aria-label="Close">
+                close
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
