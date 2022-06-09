@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neshan Map Example (OpenLayers)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="https://static.neshan.org/sdk/openlayers/5.3.0/ol.css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script type="text/javascript" src="https://static.neshan.org/sdk/openlayers/5.3.0/ol.js"></script>
+</head>
+<body>
+
+<div id="map" style="width: 600px; height: 450px; background: #eee; border: 2px solid #aaa;"></div>
+
+<script type="text/javascript">
+    var myMap = new ol.Map({
+        target: 'map',
+        key: 'YOUR_API_KEY',
+        maptype: 'dreamy',
+        poi: true,
+        traffic: false,
+        view: new ol.View({
+            center: ol.proj.fromLonLat([51.338076, 35.699756]),
+            zoom: 14
+        })
+    });
+
+</script>
+</body>
+</html>
